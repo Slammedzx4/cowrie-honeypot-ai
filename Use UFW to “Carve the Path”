@@ -1,0 +1,36 @@
+1. Allow trusted IP to real SSH (port 22)
+
+On the honeypot VM as root:
+
+sudo -i
+
+# replace 10.0.2.10 with your normal-user IP
+ufw allow from 10.0.2.10 to any port 22 proto tcp
+
+ufw status | grep 22
+
+exit
+
+
+From the normal user VM:
+
+ssh root@10.0.2.15    # now goes to real SSH on port 22
+
+2. (Optional) Block attacker IP
+
+On the honeypot VM as root:
+
+sudo -i
+
+# replace 10.0.2.14 with your attacker IP
+ufw deny from 10.0.2.14
+
+ufw status | grep 10.0.2.14
+
+exit
+
+
+From Kali:
+
+ssh root@10.0.2.15          # port 22 – should be blocked
+ssh root@10.0.2.15 -p 2222  # may still hit honeypot or also be blocked, depending on rules

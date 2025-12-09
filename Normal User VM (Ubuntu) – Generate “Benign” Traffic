@@ -1,0 +1,13 @@
+On the normal Ubuntu VM:
+
+ssh root@10.0.2.15 -p 2222
+# password: use a known-good one from Cowrie logs, e.g. "dees"
+
+ls
+whoami
+pwd
+cat /etc/issue
+exit
+
+
+Now the logs contain both attacker-like and normal behavior.

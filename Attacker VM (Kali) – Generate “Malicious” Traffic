@@ -1,0 +1,18 @@
+On Kali (replace IPs if different):
+
+# simulate multiple password guesses (brute-force style)
+ssh root@10.0.2.15 -p 2222
+# try several wrong passwords like: password, 123456, 12345, etc.
+# Ctrl+C or disconnect and repeat a few times
+
+# once you know a working password (from past logs), act like an attacker
+ssh root@10.0.2.15 -p 2222
+# password: <one that Cowrie accepts>
+
+ls
+uname -a
+cat /etc/passwd
+exit
+
+
+All of this is logged by Cowrie in cowrie.json.

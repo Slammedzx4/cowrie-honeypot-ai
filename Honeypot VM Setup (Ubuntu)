@@ -1,0 +1,42 @@
+1. Install dependencies and create cowrie user
+
+On the Ubuntu honeypot VM do these command:
+
+sudo apt update
+sudo apt install -y git python3 python3-venv python3-pip \
+    libssl-dev libffi-dev build-essential authbind jq ufw
+sudo adduser --disabled-password --gecos "" cowrie
+
+2. Install Cowrie as cowrie
+
+Use this command to open it and get the Cowrie from github:
+
+sudo su - cowrie
+
+git clone https://github.com/cowrie/cowrie.git
+cd cowrie
+
+python3 -m venv cowrie-env
+source cowrie-env/bin/activate
+
+pip install --upgrade pip
+pip install -r requirements.txt
+
+cp etc/cowrie.cfg.dist etc/cowrie.cfg
+
+By default, Cowrie listens on SSH port 2222.
+
+3. Ensure real SSH (port 22) is running
+
+Back on the honeypot VM:
+
+sudo systemctl enable ssh
+sudo systemctl start ssh
+sudo ss -tlnp | grep 22
+
+
+You should see:
+
+*:22 for sshd (real SSH)
+
+later, *:2222 for Cowrie (twistd) when it’s running

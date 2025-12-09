@@ -1,0 +1,10 @@
+On the honeypot VM:
+
+sudo su - cowrie
+cd ~/cowrie
+source cowrie-env/bin/activate
+
+twistd -n cowrie
+
+
+Leave this running in one terminal while you generate traffic from the other VMs.

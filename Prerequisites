@@ -1,0 +1,15 @@
+Virtualization: VirtualBox / VMware / etc.
+
+ISOs:
+
+Ubuntu Server or Desktop (for honeypot + user VMs)
+
+Kali Linux (for attacker VM)
+
+Each VM has:
+
+Internet access for initial package installs
+
+SSH client installed (openssh-client on Ubuntu, already on Kali)
+
+Optional: enough RAM/CPU if you install Ollama on the honeypot VM.

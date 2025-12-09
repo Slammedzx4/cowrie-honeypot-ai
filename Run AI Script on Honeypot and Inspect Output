@@ -1,0 +1,27 @@
+On the honeypot VM:
+
+sudo su - cowrie
+cd ~/analysis
+
+./ai.sh | tee recent_attackers_ai.txt
+
+
+Example output:
+
+IP: 10.0.2.14
+Creds: root/password
+Commands: ls; uname -a; cat /etc/passwd
+AI → This attacker is performing a brute-force SSH attack and system reconnaissance.
+────────────────────────────────────
+IP: 10.0.2.10
+Creds: root/dees
+Commands: ls; whoami; pwd; cat /etc/issue
+AI → This appears to be a normal user running basic interactive commands.
+────────────────────────────────────
+
+
+Use this to decide:
+
+Attacker IP (e.g. 10.0.2.14)
+
+Normal user IP (e.g. 10.0.2.10)
